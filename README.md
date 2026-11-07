@@ -2,6 +2,8 @@
 
 A dependency-free Python documentation checker with a static evidence viewer. Extract explicitly marked Markdown Python examples, validate syntax, optionally run **reviewed trusted** examples, compare stdout, check local file links/anchors, and emit JSON plus GitHub annotation text. An independent portfolio project, not a DataRobot integration.
 
+Live recorded-report viewer: https://docguard-lab.vercel.app
+
 ## Reproduce
 
 Python 3.12+; no install step or third-party dependencies.
