@@ -1,0 +1,17 @@
+{
+  "execution": "reviewed-local-process",
+  "checks": 1,
+  "failures": 1,
+  "results": [
+    {
+      "file": "drift.md",
+      "id": "stale-output",
+      "line": 5,
+      "source_sha256": "7ee30d415916048389f0761fad68ce2d74518f02855d0239a8937f3807fb96ea",
+      "status": "output_mismatch",
+      "expected": "4\n",
+      "actual": "5\n",
+      "stderr": ""
+    }
+  ]
+}

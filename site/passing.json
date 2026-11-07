@@ -1,0 +1,27 @@
+{
+  "execution": "reviewed-local-process",
+  "checks": 2,
+  "failures": 0,
+  "results": [
+    {
+      "file": "quickstart.md",
+      "id": "json-example",
+      "line": 5,
+      "source_sha256": "50ee44b7079b4581bfb6afd66e163b1d9024a4bce6da54b9980c28edde64985c",
+      "status": "passed",
+      "expected": "Ada True\n",
+      "actual": "Ada True\n",
+      "stderr": ""
+    },
+    {
+      "file": "quickstart.md",
+      "id": "sum-example",
+      "line": 17,
+      "source_sha256": "272ad553d6ba6f37dd46d0cee4cc12d2c285a69c20ef51133a2fbc3c492b2bb5",
+      "status": "passed",
+      "expected": "10\n",
+      "actual": "10\n",
+      "stderr": ""
+    }
+  ]
+}
