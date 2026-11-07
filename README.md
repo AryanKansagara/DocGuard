@@ -27,6 +27,14 @@ Pair `python check=example-id` and `text expect=example-id` triple-backtick fenc
 
 The parser supports a deliberately bounded fence convention, not all CommonMark or MDX. The link checker covers simple local Markdown paths and simple ASCII heading anchors; external links are skipped. It does not run notebooks, inspect screenshots, implement semantic retrieval, invoke Jira/GitHub APIs, or automatically publish documentation. `release_notes()` converts supplied PR-like JSON records into Markdown but does not fetch remote PR data.
 
-The inactive `ci/check.yml.example` illustrates syntax/link checks and unit tests. It is not an enabled or verified GitHub Actions workflow. CI execution mode must be limited to reviewed code on trusted runners without secrets; never use `pull_request_target` to execute fork code.
+## Pull-request checks
+
+`.github/workflows/docs.yml` runs **Documentation quality** on pull requests and pushes to `main`: 22 unit/regression tests, Python compilation, and documentation syntax/local-link validation. Source-line errors appear as GitHub annotations; a JSON report is retained as an artifact for seven days. These are status checks, not mandatory merge protection unless repository branch rules separately require them.
+
+PR events do not execute Markdown snippets. A separate **Reviewed main-branch examples** job runs expected-output comparisons only on `main` pushes or a manually dispatched `main` workflow. It also asserts that the deliberately stale fixture fails with the expected mismatch and exit status, saving both JSON reports. Review code before merging: the local execution helper is not a sandbox.
+
+The workflow uses fresh hosted runners, read-only repository permissions, SHA-pinned actions, no deployment/cloud credentials, five-minute job limits, and cancellation of superseded runs. Checkout credentials are not persisted. Ordinary PR tests still execute repository Python code; do not add secrets or run this on privileged self-hosted runners. Never use `pull_request_target` to execute fork code.
+
+To exercise a failing PR check, temporarily change `docs/quickstart.md` to link to a nonexistent local file. The PR check should fail with `missing_link`; fix the link and push another commit to restore a passing check. Actual run evidence is recorded in `VERIFICATION.md`.
 
 All demo documents, expected outputs, and checks are authored fixtures. No real user adoption, saved engineer-hours, production deployment of the checker, or general documentation coverage is claimed. The public deployment serves recorded evidence only. Code was developed with AI assistance; inspect and understand it before describing your contribution.
