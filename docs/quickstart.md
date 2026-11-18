@@ -23,3 +23,5 @@ print(sum([2, 3, 5]))
 ```
 
 [Local section](#summing-a-batch)
+
+[CI verification guide](ci-verification.md)
